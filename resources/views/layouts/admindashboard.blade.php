@@ -15,10 +15,10 @@
         <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/products">Produits</a>
+                    <a class="nav-link" href="{{ route('admin.products') }}">Produits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/admin/categories">Catégories</a>
+                    <a class="nav-link" href="{{ route('admin.categories') }}">Catégories</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/logout">Déconnexion</a>

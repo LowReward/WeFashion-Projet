@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AdminController;
@@ -21,7 +22,9 @@ Route::get('/solde', [ProductController::class, 'solde'])->name('products.solde'
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::match(['get', 'post'],'/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-Route::get('/admin/products', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/products', [AdminController::class, 'dashboard'])->name('admin.product');
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories');
+
 /*Route::middleware(['auth','isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
        //return view('admin.dashboard');

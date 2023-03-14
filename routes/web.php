@@ -21,7 +21,7 @@ Route::get('/solde', [ProductController::class, 'solde'])->name('products.solde'
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::match(['get', 'post'],'/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-
+Route::get('/admin/products', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 /*Route::middleware(['auth','isAdmin'])->group(function () {
     Route::get('/dashboard', function () {
        //return view('admin.dashboard');

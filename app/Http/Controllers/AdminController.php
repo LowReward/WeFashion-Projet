@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class AdminController extends Controller
 {
@@ -19,7 +20,7 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/homme');
         }
         return back()->withErrors([
 
@@ -31,7 +32,8 @@ class AdminController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('admin.dashboard');
+            $products = Product::all();
+            return view('admin.products', ['products' => $products]);
         }
         return redirect('/admin/login');
     }

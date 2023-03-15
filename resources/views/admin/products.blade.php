@@ -2,7 +2,8 @@
 
 @section('content')
     <h1>dashboard</h1>
-    <table class="table table-striped table-hover">
+    <li><a href="/admin/products/create" class="btn btn-primary">Ajouter une catégorie</a></li>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -22,8 +23,12 @@
                 <td>{{ $product->price }} €</td>
                 <td>{{ $product->category }}</td>
                 <td>
-                    <a href="#">Modifier</a>
-                    <a href="#">Supprimer</a>
+                    <a href="{{ route('products.edit', $product->id) }}"class="btn btn-primary ">Modifier</a>
+                    <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

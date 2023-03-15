@@ -1,8 +1,9 @@
 @extends('layouts.admindashboard')
 
 @section('content')
-    <h1>Catégories</h1>
-    <table>
+    <h1>Liste des catégories</h1>
+    <li><a href="/admin/categories/create">Ajouter une catégorie</a></li>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -18,8 +19,13 @@
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->description }}</td>
                 <td>
-                    <a href="#">Modifier</a>
-                    <a href="#">Supprimer</a>
+                    <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary">Modifier</a>
+
+                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

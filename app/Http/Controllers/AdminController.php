@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 use App\Models\Product;
 
 class AdminController extends Controller
@@ -25,14 +26,5 @@ class AdminController extends Controller
             'email' => 'Les informations d\'identification sont incorrectes',
 
         ]);
-    }
-
-    public function dashboard()
-    {
-        if (Auth::check()) {
-            $products = Product::all();
-            return view('admin.products', ['products' => $products]);
-        }
-        return redirect('/admin/login');
     }
 }

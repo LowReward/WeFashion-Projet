@@ -4,7 +4,7 @@
 @section('content')
 
 <h1>Ajouter un produit</h1>
-<form  method="POST" action="/admin/products">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="name">Name:</label>
@@ -19,18 +19,18 @@
         <input type="number" class="form-control" name="price" id="price" step="any" required/>
     </div>
     <div class="form-group">
-        <label for="category">Category:</label>
-        <select class="form-control" name="category"  id="category" required>
+        <label for="category_id">Category:</label>
+        <select class="form-control" name="category_id"  id="category_id" required>
             @foreach($categories as $category)
                 <option value="{{ $category->name }}">{{ $category->name }}</option>
             @endforeach
         </select>
     </div>
     <div></div>
-    <div>
+    <!--<div>
         <label for="image">Image du produit</label>
         <input type="file" id="image" name="image">
-    </div>
+    </div>-->
     <div>
     <button type="submit" class="btn btn-primary">Add Product</button>
     </div>

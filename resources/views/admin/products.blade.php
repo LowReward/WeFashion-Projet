@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>dashboard</h1>
-    <li><a href="/admin/products/create" class="btn btn-primary">Ajouter une catégorie</a></li>
+    <a href="/admin/products/create" class="btn btn-primary">Ajouter un produit</a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -21,7 +21,7 @@
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->price }} €</td>
-                <td>{{ $product->category }}</td>
+                <td>{{ $product->category->name }}</td>
                 <td>
                     <a href="{{ route('products.edit', $product->id) }}"class="btn btn-primary ">Modifier</a>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">

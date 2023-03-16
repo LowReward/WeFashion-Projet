@@ -22,9 +22,11 @@ Route::get('/solde', [ProductController::class, 'solde'])->name('products.solde'
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::match(['get', 'post'],'/admin/login', [AdminController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-Route::get('/admin/products', [AdminController::class, 'dashboard'])->name('admin.products');
-Route::get('/admin/products/create', [ProductController::class, 'create']);
-Route::post('/admin/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/admin/products', [AdminController::class, 'dashboard']);
+
+Route::get('/admin/products', [ProductController::class, 'dashboard'])->name('admin.products');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('/admin/producsts', [ProductController::class, 'store'])->name('products.store');
 Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');

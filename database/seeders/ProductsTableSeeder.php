@@ -12,11 +12,12 @@ class ProductsTableSeeder extends Seeder
             'description' => 'Ce que nous savons: la marque a déclaré utiliser une norme de recyclage indépendante
             Cet article contient des matériaux récupérés qui, autrement, finiraient en déchets. Cela permet de réduire la demande de matières premières et de préserver les ressources naturelles.',
             'price' => 10.99,
-            'category' => 'Men',
+            'category_id' => '1',
+            'état' => 'standard',
             'image' => 'product1.jpg'
         ]);
 
-        Product::create([
+        /*Product::create([
             'name' => 'Product 2',
             'description' => 'Description of product 2',
             'price' => 20.99,
@@ -53,6 +54,6 @@ class ProductsTableSeeder extends Seeder
             'price' => 30.99,
             'category' => 'Sale',
             'image' => 'product3.jpg'
-        ]);
+        ]);*/
     }
 }

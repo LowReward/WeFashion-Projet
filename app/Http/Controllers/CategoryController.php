@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-    $validatedData = $request->validate([
+    $validatedData = $request->validate([ //validation du form directement dans le controleur
         'name' => 'required|unique:categories|max:255',
         'description' => 'required',
     ]);

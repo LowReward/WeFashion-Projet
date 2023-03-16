@@ -3,7 +3,7 @@
 @section('content')
     <h1>Ajouter une catégorie</h1>
 
-    <form method="POST" action="/admin/categories">
+    <form method="POST" action="{{ route('categories.store') }}">
         @csrf
 
         <div>
@@ -21,3 +21,4 @@
         </div>
     </form>
 @endsection
+

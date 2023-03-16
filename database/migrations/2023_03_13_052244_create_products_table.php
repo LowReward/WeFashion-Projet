@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->decimal('price', 8, 2);
-            //$table->string('category');
-            $table->string('état');
-            $table->string('image');
+            $table->float('price');
+            $table->enum('status', ['standard', 'on_sale'])->default('standard');
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('category_id')->default(1);
             $table->timestamps();
+
         });
     }
 

@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -40,9 +41,7 @@ public function femme()
 
 public function solde()
 {
-    $products = Product::whereHas('category', function($query) {
-        $query->where('name', 'solde');
-    })->simplePaginate(6);
+    $products = Product::where('status', 'on_sale')->simplePaginate(6);
     return view('products.index', ['products' => $products]);
 }
 
@@ -64,27 +63,23 @@ public function create()
 
     public function store(Request $request)
     {
-    $validatedData = $request->validate([
-        'name' => 'required',
-        'description' => 'required',
-        'price' => 'required|numeric',
-        'status' => 'required',
-        'category_id' => 'required|exists:categories,id',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'status' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if ($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $imagePath = $request->file('image')->move('images/products', $imageName);
+            $validatedData['image'] = $imagePath;
+        }
 
-    $product = new Product();
-    $product->name = $validatedData['name'];
-    $product->description = $validatedData['description'];
-    $product->price = $validatedData['price'];
-    $product->category = $validatedData['category'];
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('');
-        $product->image = $imagePath;
-    }
-    $product->save();
+        $product = Product::create($validatedData);
 
-    return redirect('/admin/categories')->with('success', 'Le produit a été ajoutée avec succès !');
+    return redirect('/admin/products')->with('success', 'Le produit a été ajoutée avec succès !');
     }
 
     public function edit($id)
@@ -94,34 +89,33 @@ public function create()
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
 {
     // Récupération du produit à modifier
-    $product = Product::findOrFail($id);
+   // $product = Product::findOrFail($id);
 
     // Validation des données de la requête
-    $validatedData = $request->validate([
-        'name' => 'required',
+    $request->validate([
+        'name' => 'required|max:255',
         'description' => 'required',
-        'price' => 'required|numeric',
+        'price' => 'required|numeric|min:0',
+        'status' => 'required|in:standard,on_sale',
         'category_id' => 'required|exists:categories,id',
-        'état' => 'required',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ]);
 
     // Modification du produit avec les données validées
-    $product->name = $validatedData['name'];
-    $product->description = $validatedData['description'];
-    $product->price = $validatedData['price'];
-    $product->category_id = $validatedData['category_id'];
-    $product->état = $validatedData['état'];
+    $product->name = $request->input('name');
+    $product->description = $request->input('description');
+    $product->price = $request->input('price');
+    $product->status = $request->input('status');
+    $product->category_id = $request->input('category_id');
 
     // Gestion de l'image si elle a été modifiée
     if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $filename = time() . '_' . $image->getClientOriginalName();
-        Storage::putFileAs('public/images/products', $image, $filename);
-        $product->image = $filename;
+        $imageName = time().'.'.$request->image->extension();
+        $imagePath = $request->file('image')->move('images/products', $imageName);
+        $validatedData['image'] = $imagePath;
     }
 
     // Enregistrement des modifications

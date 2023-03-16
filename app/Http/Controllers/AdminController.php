@@ -19,7 +19,7 @@ class AdminController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/homme');
+            return redirect()->intended('/admin/products');
         }
         return back()->withErrors([
 

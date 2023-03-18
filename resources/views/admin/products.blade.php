@@ -1,6 +1,11 @@
 @extends('layouts.admindashboard')
 
-@section('content')
+    @section('content')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <h1>dashboard</h1>
     <a href="/admin/products/create" class="btn btn-primary">Ajouter un produit</a>
     <table class="table table-striped">
@@ -11,6 +16,7 @@
                 <th>Description</th>
                 <th>Prix</th>
                 <th>Catégorie</th>
+                <th>Status</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -22,6 +28,7 @@
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->price }} €</td>
                 <td>{{ $product->category->name }}</td>
+                <td>{{ $product->status }}</td>
                 <td>
                     <a href="{{ route('products.edit', $product->id) }}"class="btn btn-primary ">Modifier</a>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">

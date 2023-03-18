@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 
@@ -113,14 +114,14 @@ public function create()
 
     // Gestion de l'image si elle a été modifiée
     if ($request->hasFile('image')) {
-        $imageName = time().'.'.$request->image->extension();
+        $imageName = Str::random(12).'.'.$request->image->extension();
         $imagePath = $request->file('image')->move('images/products', $imageName);
-        $validatedData['image'] = $imagePath;
+        $product->image = $imagePath;
     }
 
-    // Enregistrement des modifications
     $product->save();
 
+    // Enregistrement des modifications
     // Redirection vers la liste des produits avec un message de succès
     return redirect('/admin/products')->with('success', 'Le produit a été modifiée avec succès!');
 }

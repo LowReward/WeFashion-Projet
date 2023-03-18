@@ -1,8 +1,15 @@
 @extends('layouts.admindashboard')
 
+
+
 @section('content')
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <h1>Liste des catégories</h1>
-    <li><a href="/admin/categories/create">Ajouter une catégorie</a></li>
+    <a href="/admin/categories/create" class="btn btn-primary">Ajouter une catégorie</a>
     <table class="table table-striped">
         <thead>
             <tr>

@@ -17,7 +17,8 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy('created_at', 'desc')->where('published', 'published')->simplePaginate(6);
-        return view('products.index', compact('products'));
+        $counter = Product::orderBy('created_at', 'desc')->where('published', 'published');
+        return view('products.index', compact('products','counter'));
     }
 
     public function show($id)
@@ -28,22 +29,27 @@ class ProductController extends Controller
 
     public function homme()
 {
-    $products = Product::whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published')->simplePaginate(6);
-    return view('products.index', ['products' => $products]);
+    $counter = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published');
+    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published')->simplePaginate(6);
+    return view('products.index', compact('products','counter'));
 }
 
 public function femme()
 {
-    $products = Product::whereHas('category', function($query) {
+    $counter = $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {
+        $query->where('name', 'femme');
+    })->where('published', 'published');
+    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {
         $query->where('name', 'femme');
     })->where('published', 'published')->simplePaginate(6);
-    return view('products.index', ['products' => $products]);
+    return view('products.index', compact('products','counter'));
 }
 
 public function solde()
 {
-    $products = Product::where('status', 'on_sale')->where('published', 'published')->simplePaginate(6);
-    return view('products.index', ['products' => $products]);
+    $counter = $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published');
+    $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published')->simplePaginate(6);
+    return view('products.index', compact('products','counter'));
 }
 
 public function dashboard()

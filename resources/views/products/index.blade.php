@@ -6,7 +6,7 @@
         <div class="d-flex justify-content-between mb-3">
             <h2>Liste des produits</h2>
             <div class="ml-auto">
-                <p>{{ $products->count() }} produits</p>
+                <p>{{ $counter->count() }} produits</p>
             </div>
         </div>
         @foreach($products as $product)
@@ -24,7 +24,7 @@
             </div>
         @endforeach
         <div class="d-flex justify-content-center">
-            {{ $products->links() }}
+            {{ $products->links('pagination::simple-bootstrap-5') }}
         </div>
     </div>
 @endsection

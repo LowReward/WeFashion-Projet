@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Créer un produit</h1>
+        <h1 class="mb-4">Modifier un produit : {{ $product->name }}</h1>
         <div class="row">
             <div class="col-md-8">
                 <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label for="name">Nom :</label>
                         <input type="text" name="name" id="name"
-                            class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required
+                            class="form-control @error('name') is-invalid @enderror" value="{{ old('name'), $product->name }}" required
                             autofocus>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="description">Description :</label>
                         <textarea name="description" id="description" rows="5"
-                            class="form-control @error('description') is-invalid @enderror" required>{{ old('description') }}</textarea>
+                            class="form-control @error('description') is-invalid @enderror" required>{{ old('description'), $product->description }}</textarea>
                         @error('description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <label for="price">Prix :</label>
                         <input type="number" name="price" id="price"
-                            class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}"
+                            class="form-control @error('price') is-invalid @enderror" value="{{ old('price'), $product->price  }}"
                             min="0" step="0.01" required>
                         @error('price')
                             <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                     <div class="form-group">
                         <label for="reference">Reference :</label>
                         <input type="text" name="reference" id="reference"
-                            class="form-control @error('reference') is-invalid @enderror" value="{{ old('reference') }}" maxlength="16" required
+                            class="form-control @error('reference') is-invalid @enderror" value="{{ old('reference'), $product->reference  }}" maxlength="16" required
                             autofocus>
                         @error('reference')
                             <span class="invalid-feedback" role="alert">
@@ -60,8 +60,8 @@
                         <select name="status" id="status" class="form-control @error('status') is-invalid @enderror"
                             required>
                             <option value="" disabled selected>Selectionnez un statut</option>
-                            <option value="standard"{{ old('status') === 'standard' ? ' selected' : '' }}>Standard</option>
-                            <option value="on_sale"{{ old('status') === 'on_sale' ? ' selected' : '' }}>En solde
+                            <option value="standard"{{ old('status', $product->status ) === 'standard' ? ' selected' : '' }}>Standard</option>
+                            <option value="on_sale"{{ old('status', $product->status ) === 'on_sale' ? ' selected' : '' }}>En solde
                             </option>
                         </select>
                         @error('status')
@@ -78,7 +78,7 @@
                             <option value="" disabled selected>Selectionnez une catégorie</option>
                             @foreach ($categories as $category)
                                 <option
-                                    value="{{ $category->id }}"{{ old('category_id') == $category->id ? ' selected' : '' }}>
+                                    value="{{ $category->id }}"{{ old('category_id', $product->category_id ) == $category->id ? ' selected' : '' }}>
                                     {{ $category->name }}</option>
                             @endforeach
                         </select>
@@ -94,8 +94,8 @@
                         <select name="published" id="published" class="form-control @error('published') is-invalid @enderror"
                             required>
                             <option value="" disabled selected>Selectionnez une option</option>
-                            <option value="published"{{ old('published') === 'published' ? ' selected' : '' }}>Publqiue</option>
-                            <option value="not_published"{{ old('published') === 'not_published' ? ' selected' : '' }}>En solde
+                            <option value="published"{{ old('published', $product->published ) === 'published' ? ' selected' : '' }}>Publqiue</option>
+                            <option value="not_published"{{ old('published', $product->published ) === 'not_published' ? ' selected' : '' }}>En solde
                             </option>
                         </select>
                         @error('published')

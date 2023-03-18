@@ -6,8 +6,10 @@
             {{ session('success') }}
         </div>
     @endif
-    <h1>dashboard</h1>
-    <a href="/admin/products/create" class="btn btn-primary">Ajouter un produit</a>
+    <h1>Liste des produits</h1>
+    <div class="d-flex justify-content-end">
+    <a href="/admin/products/create" class="btn btn-primary d-flex ml-auto">Ajouter un produit</a>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -34,7 +36,7 @@
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" class="btn btn-danger" id="delete-product-">Supprimer</button>
                     </form>
                 </td>
             </tr>

@@ -87,6 +87,38 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="reference" class="col-md-4 col-form-label text-md-right">{{ __('reference') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror " value="{{ old('reference') }}" name="reference">
+
+                                @error('reference')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="published" class="col-md-4 col-form-label text-md-right">L'article est-il à publier ?</label>
+
+                            <div class="col-md-6">
+                                <select name="published" id="published" class="form-control @error('published') is-invalid @enderror">
+                                    <option value="">Veuillez faire un choix</option>
+                                    <option value="published">Publier</option>
+                                    <option value="not_published">Ne pas publier</option>
+                                </select>
+
+                                @error('published')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
 
                         <div class="form-group row">

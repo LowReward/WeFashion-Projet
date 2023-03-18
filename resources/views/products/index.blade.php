@@ -17,7 +17,7 @@
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">{{ $product->price }}</p>
+                        <p class="card-text">{{ $product->price }}€</p>
                         <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary">Voir le produit</a>
                     </div>
                 </div>

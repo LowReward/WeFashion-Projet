@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->float('price');
             $table->enum('status', ['standard', 'on_sale'])->default('standard');
+            $table->enum('published', ['published', 'not_published'])->default('published');
+            $table->string('reference',16);
             $table->string('image')->nullable();
             $table->unsignedBigInteger('category_id')->default(1);
             $table->timestamps();

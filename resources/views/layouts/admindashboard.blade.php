@@ -8,11 +8,12 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Dashboard</a>
+        <div class="container justify-content-center"></div>
+            <a class="navbar-brand mb-0 h1 justify-content-center" href="{{ route('products.index') }}" style="color: #66EB9A">WeFashion</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+        <div class="collapse navbar-collapse d-flex " id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.products') }}">Produits</a>

@@ -16,7 +16,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('created_at', 'desc')->simplePaginate(6);
+        $products = Product::orderBy('created_at', 'desc')->where('published', 'published')->simplePaginate(6);
         return view('products.index', compact('products'));
     }
 
@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function homme()
 {
-    $products = Product::whereHas('category', function($query) {$query->where('name', 'homme');})->simplePaginate(6);
+    $products = Product::whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published')->simplePaginate(6);
     return view('products.index', ['products' => $products]);
 }
 
@@ -36,13 +36,13 @@ public function femme()
 {
     $products = Product::whereHas('category', function($query) {
         $query->where('name', 'femme');
-    })->simplePaginate(6);
+    })->where('published', 'published')->simplePaginate(6);
     return view('products.index', ['products' => $products]);
 }
 
 public function solde()
 {
-    $products = Product::where('status', 'on_sale')->simplePaginate(6);
+    $products = Product::where('status', 'on_sale')->where('published', 'published')->simplePaginate(6);
     return view('products.index', ['products' => $products]);
 }
 
@@ -69,6 +69,8 @@ public function create()
             'description' => 'required',
             'price' => 'required|numeric',
             'status' => 'required',
+            'reference' => 'required',
+            'published' => 'required',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

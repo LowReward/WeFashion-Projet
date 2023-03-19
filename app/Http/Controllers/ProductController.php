@@ -16,7 +16,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('created_at', 'desc')->where('published', 'published')->simplePaginate(6);
+
+        $products = Product::orderBy('created_at', 'desc')->where('published', 'published')->Paginate(6);
         $counter = Product::orderBy('created_at', 'desc')->where('published', 'published');
         return view('products.index', compact('products','counter'));
     }
@@ -55,7 +56,7 @@ public function solde()
 public function dashboard()
     {
         if (Auth::check()) {
-            $products = Product::with('category')->get();
+            $products = Product::with('category')->paginate(15);
             $categories = Category::all();
             return view('admin.products', compact('products', 'categories'));
         }

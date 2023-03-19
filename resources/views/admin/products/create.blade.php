@@ -46,8 +46,8 @@
                     <div class="form-group">
                         <label for="reference">Reference :</label>
                         <input type="text" name="reference" id="reference"
-                            class="form-control @error('reference') is-invalid @enderror" value="{{ old('reference') }}" maxlength="16" required
-                            autofocus>
+                            class="form-control @error('reference') is-invalid @enderror" value="{{ old('reference') }}"
+                            maxlength="16" required autofocus>
                         @error('reference')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -91,11 +91,13 @@
 
                     <div class="form-group">
                         <label for="published">Apparation en publique :</label>
-                        <select name="published" id="published" class="form-control @error('published') is-invalid @enderror"
-                            required>
+                        <select name="published" id="published"
+                            class="form-control @error('published') is-invalid @enderror" required>
                             <option value="" disabled selected>Selectionnez une option</option>
-                            <option value="published"{{ old('published') === 'published' ? ' selected' : '' }}>Publqiue</option>
-                            <option value="not_published"{{ old('published') === 'not_published' ? ' selected' : '' }}>En solde
+                            <option value="published"{{ old('published') === 'published' ? ' selected' : '' }}>Publique
+                            </option>
+                            <option value="not_published"{{ old('published') === 'not_published' ? ' selected' : '' }}>Non
+                                publique
                             </option>
                         </select>
                         @error('published')
@@ -109,10 +111,10 @@
 
                     <div class="form-group">
                         <label for="image">Image</label>
-                        <div class="custom-file" >
+                        <div class="custom-file">
                             <input type="file" name="image" id="image"
                                 class="custom-file-input @error('image') is-invalid @enderror" required>
-                                <label class="custom-file-label" for="image">Choisissez une image</label>
+                            <label class="custom-file-label" for="image">Choisissez une image</label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Ajouter</button>

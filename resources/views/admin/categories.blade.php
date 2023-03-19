@@ -9,11 +9,12 @@
         </div>
     @endif
     <h1>Liste des catégories</h1>
-    <a href="/admin/categories/create" class="btn btn-primary">Ajouter une catégorie</a>
+    <div class="d-flex justify-content-end">
+        <a href="/admin/categories/create" class="btn btn-primary d-flex ml-auto">Ajouter une categorie</a>
+        </div>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Action</th>
@@ -22,7 +23,6 @@
         <tbody>
             @foreach ($categories as $category)
             <tr>
-                <td>{{ $category->id }}</td>
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->description }}</td>
                 <td>

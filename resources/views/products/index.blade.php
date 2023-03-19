@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="row">
         <div class="d-flex justify-content-between mb-3">
             <h2>Liste des produits</h2>
@@ -23,8 +22,8 @@
                 </div>
             </div>
         @endforeach
-        <div class="d-flex justify-content-center">
-            {{ $products->links('pagination::simple-bootstrap-5') }}
-        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ $products->links('') }}
     </div>
 @endsection

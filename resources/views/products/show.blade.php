@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="" style="width: 550px; height: 550px; object-fit: cover;">
+            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="border border-dark" style="width: 550px; height: 550px; object-fit: cover;">
         </div>
         <div class="col-md-6">
             <h2>{{ $product->name }}</h2>
@@ -19,9 +19,9 @@
                         <option value="XL">XL</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary ">Acheter</button>
+                <button type="button" class="btn btn-primary ">Acheter</button>
             </form>
         </div>
     </div>
-    <p>{{ $product->description }}</p>
+    <p class="mt-3">{{ $product->description }}</p>
 @endsection

@@ -37,7 +37,7 @@
 
 
 
-    <footer class="bg-light py-3">
+    <footer class="bg-light py-3 fixed-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -60,7 +60,7 @@
                     <h5>Réseaux sociaux</h5>
                     <ul class="list-unstyled">
                         <li><a href="https://www.facebook.com" class="bi bi-facebook link-secondary text-decoration-none"> Facebook</a></li>
-                        <li><a href="#" class="bi bi-instagram link-secondary text-decoration-none "> Instagram</a></li>
+                        <li><a href="https://www.instagram.com" class="bi bi-instagram link-secondary text-decoration-none "> Instagram</a></li>
                         <li><a href="#" class="link-secondary text-decoration-none">Inscrivez vous à la newsletter</a></li>
                     </ul>
                 </div>

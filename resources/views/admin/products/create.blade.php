@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Créer un produit</h1>
+        <h1 class="mb-4">Ajouter un produit</h1>
         <div class="row">
             <div class="col-md-8">
                 <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
@@ -117,7 +117,7 @@
                             <label class="custom-file-label" for="image">Choisissez une image</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
                 </form>
             </div>
         </div>

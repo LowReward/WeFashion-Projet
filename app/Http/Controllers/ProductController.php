@@ -56,7 +56,7 @@ public function solde()
 public function dashboard()
     {
         if (Auth::check()) {
-            $products = Product::with('category')->paginate(15);
+            $products = Product::with('category')->whereHas('category')->paginate(15);
             $categories = Category::all();
             return view('admin.products', compact('products', 'categories'));
         }

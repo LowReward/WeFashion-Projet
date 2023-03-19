@@ -7,7 +7,6 @@
             <div class="col-md-8">
                 <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="form-group">
                         <label for="name">Nom :</label>
                         <input type="text" name="name" id="name"
@@ -31,7 +30,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Ajouter</button>
+                    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
                 </form>
             </div>
         </div>

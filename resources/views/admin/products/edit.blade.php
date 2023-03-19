@@ -122,7 +122,7 @@
                             <label class="custom-file-label" for="image">Choisissez une image</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Modifier</button>
+                    <button type="submit" class="btn btn-primary mt-3">Modifier</button>
                 </form>
             </div>
         </div>

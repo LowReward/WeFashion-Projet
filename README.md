@@ -13,7 +13,7 @@
 - lancer `php artisan serve` pour ensuite consulter le projet à l'adresse indiqué
 
 ## Utilisateur admin :
--Vous pouvez accéder à la page administrateur directement via /admin
+- Vous pouvez accéder à la page administrateur directement via /admin
 
 Les identifiants de connexion :
 ```

@@ -28,7 +28,7 @@
                 <td>{{ $product->price }} €</td>
                 <td>{{ $product->status }}</td>
                 <td>
-                    <a href="{{ route('products.edit', $product->id) }}"class="btn btn-primary ">Modifier</a>
+                    <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary ">Modifier</a>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')

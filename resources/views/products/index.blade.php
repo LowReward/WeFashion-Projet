@@ -12,7 +12,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <a href="{{ route('products.show', $product->id) }}">
-                        <img class="card-img-top img-fluid" src="{{ asset($product->image) }}" alt="{{ $product->name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                        <img class="card-img-top img-fluid" src="{{ asset($product->image) }}" alt="{{ $product->name }}" style="max-width: 100%; height: 250px; object-fit: cover;">
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>

@@ -3,7 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-6">
-            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="border border-dark" style="width: 550px; height: 550px; object-fit: cover;">
+            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="border border-dark img-fluid">
+
         </div>
         <div class="col-md-6">
             <h2>{{ $product->name }}</h2>

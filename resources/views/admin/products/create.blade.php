@@ -47,7 +47,7 @@
                         <label for="reference">Reference :</label>
                         <input type="text" name="reference" id="reference"
                             class="form-control @error('reference') is-invalid @enderror" value="{{ old('reference') }}"
-                            maxlength="16" required autofocus>
+                            maxlength="16" required>
                         @error('reference')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

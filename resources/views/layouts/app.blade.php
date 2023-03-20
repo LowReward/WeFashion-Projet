@@ -2,17 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenue chez WeFashion, la seule maison à vous proposer d'aussi belles collections peu importe la saison">
     <title>WeFashion</title>
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
+
 <body class="d-flex flex-column min-vh-100">
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <!--<div class="container justify-content-center"></div>-->
         <div class="container justify-content-center">
-        <a class="navbar-brand  h1 mx-auto my-auto" href="{{ route('products.index') }}" style="color: #66EB9A">WeFashion</a>
+        <a class="navbar-brand" href="{{ route('products.index') }}" style="color: #66EB9A">WeFashion</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,6 +32,7 @@
                 </li>
             </ul>
         </div>
+    </div>
     </nav>
     </header>
 

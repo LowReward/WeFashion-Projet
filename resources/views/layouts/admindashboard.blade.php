@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
     <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container justify-content-center">
-        <a class="navbar-brand h1 mx-auto my-auto" href="#" style="color: #66EB9A">WeFashion</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.products') }}">Produits</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{{ route('admin.categories') }}">Catégories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/"><i class="bi bi-box-arrow-right"></i></a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container justify-content-center">
+            <a class="navbar-brand" href="#" style="color: #66EB9A">WeFashion</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.products') }}">Produits</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="{{ route('admin.categories') }}">Catégories</a>
+                    </li>
+                </ul>
+                <a class="navbar-brand mx-auto" href="/"><i class="bi bi-house-door-fill"></i></a>
+            </div>
         </div>
-    </div>
-</nav>
-    </header>
+    </nav>
+        </header>
+
+
+
+
     <div class="container mt-3">
         @yield('content')
     </div>

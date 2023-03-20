@@ -7,9 +7,14 @@ class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
+        // Ici on vient créer 2 catégories à l'aide de la méthode create()
         Category::create([
-            'name' => 'Homme',
+            'name' => 'homme',
             'description' => 'Catégorie homme'
+        ]);
+        Category::create([
+            'name' => 'femme',
+            'description' => 'Catégorie femme'
         ]);
     }
 }

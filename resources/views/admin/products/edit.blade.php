@@ -47,7 +47,7 @@
                         <label for="reference">Reference :</label>
                         <input type="text" name="reference" id="reference"
                             class="form-control @error('reference') is-invalid @enderror"
-                            value="{{ $product->reference, old('reference') }}" maxlength="16" required autofocus>
+                            value="{{ $product->reference, old('reference') }}" maxlength="16" required>
                         @error('reference')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -120,7 +120,7 @@
                     <div class="form-group">
                         <label for="published">Apparation en publique :</label>
                         <select name="published" id="published"
-                            class="form-control @error('published') is-invalid @enderror" required>
+                            class="form-control @error('published') is-invalid @enderror" required >
                             <option value="" disabled selected>Selectionnez une option</option>
                             <option
                                 value="published"{{ old('published', $product->published) === 'published' ? ' selected' : '' }}>

@@ -21,12 +21,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.products') }}">Produits</a>
+                        <a class="nav-link" href="{{ route('admin.products') }}">PRODUITS</a>
                     </li>
                     <li class="nav-item mr-3">
-                        <a class="nav-link" href="{{ route('admin.categories') }}">Catégories</a>
+                        <a class="nav-link" href="{{ route('admin.categories') }}">CATÉGORIES</a>
                     </li>
                 </ul>
+                <!-- Icone pour le retour à la page client -->
                 <a class="navbar-brand mx-auto" href="/"><i class="bi bi-house-door-fill"></i></a>
             </div>
         </div>
@@ -57,7 +58,9 @@
 
     <!-- JS de Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
     <script>
+        // Pop in pour la confirmation de suppression
         document.querySelectorAll('[id^="delete-product-"]').forEach(function(button) {
             button.addEventListener('click', function(event) {
                 event.preventDefault();

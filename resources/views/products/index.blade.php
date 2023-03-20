@@ -24,7 +24,7 @@
             </div>
         @endforeach
     </div>
-    <!-- Pagination en dessous de page -->
+    <!-- Pagination en dessous des produits-->
     <div class="d-flex justify-content-center">
         {{ $products->links('') }}
     </div>

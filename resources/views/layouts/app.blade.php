@@ -21,13 +21,13 @@
         <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.solde') }}">Solde</a>
+                    <a class="nav-link" href="{{ route('products.solde') }}">SOLDES</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.homme') }}">Homme</a>
+                    <a class="nav-link" href="{{ route('products.homme') }}">HOMME</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.femme') }}">Femme</a>
+                    <a class="nav-link" href="{{ route('products.femme') }}">FEMME</a>
                 </li>
             </ul>
         </div>
@@ -37,7 +37,6 @@
 
     <div class="container mt-4">
         @yield('content')
-
     </div>
 
 

@@ -29,6 +29,7 @@ Route::post('/admin/login', [AdminController::class, 'login'])->name('admin.logi
 Route::get('/admin/products', [AdminController::class, 'dashboard']);
 
 // Toutes les routes nécessaires au bon fonctionnement de notre partie produits
+Route::get('/admin', [ProductController::class, 'dashboard']); // Celle-ci envoie vers le dashboard, mais avec l'auth::check si l'admin n'est pas connecté on est renvoyé vers la page login
 Route::get('/admin/products', [ProductController::class, 'dashboard'])->name('admin.products');
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('products.create');
 Route::post('/admin/products', [ProductController::class, 'store'])->name('products.store');

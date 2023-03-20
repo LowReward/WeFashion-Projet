@@ -31,7 +31,7 @@ class ProductsTableSeeder extends Seeder
             'name' => 'VINTAGE QUARTERBACK - T-shirt à manches longues',
             'description' => 'T-shirt à manches longues de la marque Superdry',
             'price' => 44.99,
-            'status' => 'standard',
+            'status' => 'on_sale',
             'reference' => 'A97DQOLPMANXO106',
             'image' => 'images/products/3.png',
             'sizes' => 'XS,S,M,L',
@@ -40,13 +40,94 @@ class ProductsTableSeeder extends Seeder
         Product::create([
             'name' => 'FLORAL - T-shirt imprimé',
             'description' => 'Nouveau t-shirt de la marque Jack & Jones',
-            'price' => 21.99,
+            'price' => 15.99,
             'status' => 'standard',
             'reference' => 'A97DQOLPMANXO106',
-            'image' => 'images/products/3.png',
+            'image' => 'images/products/4.png',
+            'sizes' => 'S,M',
+            'category_id' => '1',
+        ]);
+        Product::create([
+            'name' => 'BHTEE - Pullover',
+            'description' => 'Pull couleur delft avec son magnifique col rond',
+            'price' => 19.50,
+            'status' => 'standard',
+            'reference' => 'A97DQOLPMANXO106',
+            'image' => 'images/products/5.png',
             'sizes' => 'XS,S,M,L',
             'category_id' => '1',
         ]);
+        Product::create([
+            'name' => 'Tshirt Femme - Bleu',
+            'description' => 'Tshirt pour femme de couleur bleu',
+            'price' => 12,
+            'status' => 'standard',
+            'reference' => 'A67AAALPMANXO106',
+            'image' => 'images/products/8.png',
+            'sizes' => 'XS,S,M,L,XL',
+            'category_id' => '2',
+        ]);
+        Product::create([
+            'name' => 'Jean Slim',
+            'description' => 'Jean simple',
+            'price' => 15.99,
+            'status' => 'standard',
+            'reference' => 'A67AAALJEANO106',
+            'image' => 'images/products/9.png',
+            'sizes' => 'XS,S,M,L,XL',
+            'category_id' => '2',
+        ]);
+        Product::create([
+            'name' => 'Pullover Femme - Vert',
+            'description' => 'Magnifique pullover imaginé pour la collection de printemps',
+            'price' => 15.99,
+            'status' => 'on_sale',
+            'reference' => 'A67AAALJEANO106',
+            'image' => 'images/products/10.png',
+            'sizes' => 'XS,S,M,L,XL',
+            'category_id' => '2',
+        ]);
+        Product::create([
+            'name' => 'Chemise été',
+            'description' => 'Légère chemise à fleurs venant des îles les plus propices',
+            'price' => 11.99,
+            'status' => 'on_sale',
+            'reference' => 'A67AAALJEANO106',
+            'image' => 'images/products/11.png',
+            'sizes' => 'XS,S,M,L,XL',
+            'category_id' => '2',
+        ]);
+        Product::create([
+            'name' => 'Chemise été 2',
+            'description' => 'Légère chemise à fleurs venant des îles les plus propices',
+            'price' => 12.45,
+            'status' => 'standard',
+            'reference' => 'A67AAALJEANO106',
+            'image' => 'images/products/11.png',
+            'sizes' => 'S,L',
+            'category_id' => '2',
+        ]);
+        Product::create([
+            'name' => 'Veste',
+            'description' => 'Veste légère',
+            'price' => 12.45,
+            'status' => 'standard',
+            'reference' => 'A67AAALJEANO106',
+            'image' => 'images/products/12.png',
+            'sizes' => 'S,M',
+            'category_id' => '2',
+        ]);
+        Product::create([
+            'name' => 'Manteaux',
+            'description' => 'Manteaux long',
+            'price' => 12.45,
+            'status' => 'standard',
+            'reference' => 'A67AAALJEANO106',
+            'image' => 'images/products/13.png',
+            'sizes' => 'XS',
+            'category_id' => '2',
+        ]);
+
 
     }
 }

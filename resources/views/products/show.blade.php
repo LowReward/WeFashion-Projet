@@ -2,12 +2,11 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
-            <!-- Affichage de l'image' du produit, récupérée à partir de la propriété "image" du produit -->
-            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="border border-dark img-fluid" style="max-width: 500px; ">
-
+        <div class="col-md-6" style="width: 500px; ">
+            <!-- Affichage de l'image du produit, récupérée à partir de la propriété "image" du produit -->
+            <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" class="border border-dark img-fluid">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 " >
             <!-- Affichage du nom du produit, récupérée à partir de la propriété "name" du produit -->
             <h2>{{ $product->name }}</h2>
             <p>Prix : {{ $product->price }} €</p>

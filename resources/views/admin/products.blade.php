@@ -34,7 +34,14 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->category->name }}</td>
                     <td>{{ $product->price }} €</td>
-                    <td>{{ $product->status }}</td>
+                    <!-- la colonne status comprend les valeurs on_sale/standard, donc on traduit ceci en Français à l'affichage-->
+                    <td>
+                        @if ($product->status == 'on_sale')
+                            En solde
+                        @else
+                            Standard
+                        @endif
+                    </td>
                     <td>
                         <!-- Bouton pour modifier la catégorie -->
                         <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary ">Modifier</a>
@@ -50,6 +57,7 @@
             @endforeach
         </tbody>
     </table>
+    <!-- Pagination en dessous des produits-->
     <div class="d-flex justify-content-center">
         {{ $products->links('') }}
     </div>

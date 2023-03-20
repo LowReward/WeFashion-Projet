@@ -3,7 +3,7 @@
 
 ## Guide d'installation
 
-- Faire un clone du repository sur la machine en local : git clone https://github.com/LowReward/WeFashion-Projet.git
+- Faire un clone du repository sur la machine en local : `git clone https://github.com/LowReward/WeFashion-Projet.git`
 - copier .exemple.env
 - Créer une nouvelle base de données sous le nom de wefashion et y ajouter les informations dans votre fichier .env
 - saisir : `composer install`

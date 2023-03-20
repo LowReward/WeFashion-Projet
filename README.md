@@ -1,7 +1,7 @@
 <p align="center"><a href="#" target="_blank"><img src="https://seeklogo.com/images/W/WE_Fashion-logo-AE6F8295EF-seeklogo.com.png" width="400" alt="Wefashion logo"></a></p>
-# We Fashion vend des vêtements homme et femme de créateurs.
+<p align="center">We Fashion vend des vêtements homme et femme de créateurs.
 Dans le futur, cette plateforme a pour but d’être multicanal : boutique en ligne ou en VR, sur 
-mobile, via un agent conversationnel
+mobile, via un agent conversationnel</p>
 
 
 ## Guide d'installation

@@ -6,10 +6,10 @@
 - Faire un clone du repository sur la machine en local : 
 - copier .exemple.env
 - Créer une nouvelle base de données sous le nom de wefashion et y ajouter les informations dans votre fichier .env
-- saisir : composer install
-- npm install && npm run dev
-- php artisan key:generate
-- php artisan wefashion:install
+- saisir : `composer install`
+- `npm install && npm run dev`
+- `php artisan key:generate`
+- `php artisan wefashion:install`
 - lancer php artisan serve pour ensuite consulter le projet à l'adresse indiqué
 
 ## Utilisateur admin :

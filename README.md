@@ -7,7 +7,11 @@ mobile, via un agent conversationnel.</p>
 ## Guide d'installation
 
 - Faire un clone du repository sur la machine en local : `git clone https://github.com/LowReward/WeFashion-Projet.git`
+<<<<<<< HEAD
 - Faire une copie de `.exemple.env` et renommer le fichier en `.env`
+=======
+- copier .exemple.env
+>>>>>>> 4f33d0630323218cf753f05b79d488951775eee7
 - Créer une nouvelle base de données sous le nom de wefashion et y ajouter les informations dans votre fichier .env
 - saisir : `composer install`
 - `npm install && npm run dev`
@@ -23,3 +27,7 @@ Les identifiants de connexion :
 Email : edouard@admin.com
 Mot de passe : wefashion123
 ```
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4f33d0630323218cf753f05b79d488951775eee7

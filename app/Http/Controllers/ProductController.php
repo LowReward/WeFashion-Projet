@@ -142,6 +142,7 @@ class ProductController extends Controller
         'price' => 'required|numeric|min:0',
         'status' => 'required|in:standard,on_sale',
         'category_id' => 'required|exists:categories,id',
+        'published' => 'required',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'sizes' => 'required|array',
     ]);
@@ -152,6 +153,7 @@ class ProductController extends Controller
     $product->price = $request->input('price');
     $product->status = $request->input('status');
     $product->category_id = $request->input('category_id');
+    $product->published = $request->input('published');
     $sizes = $request->input('sizes');
     $product->sizes = implode(',', $sizes);
 

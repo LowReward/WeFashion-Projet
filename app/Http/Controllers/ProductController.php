@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 
 class ProductController extends Controller
@@ -93,14 +93,32 @@ class ProductController extends Controller
         // La fonction implode() permet de transformer notre tableau en chaine de caractères.
         $sizes = implode(',', $validatedData['sizes']); // ex : ('séparateur',tableau)
 
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Dans l'idée il aurait été préférable de faire un redimessionement d'image à chaque téléversement avec la bibliothèque GD et intervention //
+        // Cependant comme je ne sais pas si celle-ci sera utilisable sur l'environnement de corretion/lecture, on affichera juste                  //
+        // les images avec un max-width de 500px pour éviter aux grosses images de manger de l'espace.                                              //
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        // Voici tout de même le code utilsant le package intervention
+        //    $imageName = Str::random(12).'.'.$request->image->extension();
+        //    $image = Image::make($request->file('image'))->resize(500, 500, function ($constraint) {
+        //    $constraint->aspectRatio();
+        //    $constraint->upsize();
+        //        })->encode($request->image->extension());
+        //    Storage::put('public/images/products/'.$imageName, (string) $image);
+        //    $validatedData['image'] = 'storage/images/products/'.$imageName;
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         // Par mesure de sécurité on nomme notre image par une suite de caractères aléatoires
         $imageName = Str::random(12).'.'.$request->image->extension();
         // Celle-ci sera enregistrée dans le répertoire 'public/images/products' à l'aide de la méthode move de laravel
         $imagePath = $request->file('image')->move('images/products', $imageName);
         $imagePath = str_replace('\\', '/', $imagePath);
         $validatedData['image'] = $imagePath;
-
         $validatedData['sizes'] = $sizes;
+
         $product = Product::create($validatedData);
 
 

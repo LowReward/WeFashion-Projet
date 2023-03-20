@@ -13,7 +13,6 @@
 <body class="d-flex flex-column min-vh-100">
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <!--<div class="container justify-content-center"></div>-->
         <div class="container justify-content-center">
         <a class="navbar-brand" href="{{ route('products.index') }}" style="color: #66EB9A">WeFashion</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

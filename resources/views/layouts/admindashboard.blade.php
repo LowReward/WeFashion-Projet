@@ -61,7 +61,7 @@
         document.querySelectorAll('[id^="delete-product-"]').forEach(function(button) {
             button.addEventListener('click', function(event) {
                 event.preventDefault();
-                if (confirm("Êtes-vous sûr de vouloir supprimer ce produit ?")) {
+                if (confirm("Êtes-vous sûr de vouloir supprimer cet élément ?")) {
                     // Si l'utilisateur confirme la suppression, soumettre le formulaire
                     event.target.closest('form').submit();
                 }

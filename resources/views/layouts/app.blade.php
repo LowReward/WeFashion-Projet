@@ -2,12 +2,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WeFashion</title>
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css') }}">
-    <!-- Option 1: Include in HTML -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
+    <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <!--<div class="container justify-content-center"></div>-->
         <div class="container justify-content-center">
@@ -29,6 +30,7 @@
             </ul>
         </div>
     </nav>
+    </header>
 
     <div class="container mt-4">
         @yield('content')
@@ -37,7 +39,7 @@
 
 
 
-    <footer class="bg-light py-3 fixed-bottom">
+    <footer class="bg-light py-3 mt-auto">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">

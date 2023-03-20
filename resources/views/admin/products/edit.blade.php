@@ -75,6 +75,31 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="sizes">Tailles disponibles :</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="XS" id="size-XS" {{ in_array('XS', explode(',', $product->sizes)) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="size-XS">XS</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="S" id="size-S" {{ in_array('S', explode(',', $product->sizes)) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="size-S">S</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="M" id="size-M" {{ in_array('M', explode(',', $product->sizes)) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="size-M">M</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="L" id="size-L" {{ in_array('L', explode(',', $product->sizes)) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="size-L">L</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="XL" id="size-XL" {{ in_array('XL', explode(',', $product->sizes)) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="size-XL">XL</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
                         <label for="category_id">Catégorie :</label>
                         <select name="category_id" id="category_id"
                             class="form-control @error('category_id') is-invalid @enderror" required>

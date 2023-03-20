@@ -12,11 +12,9 @@
                 <div class="form-group ">
                     <label for="size">Taille :</label>
                     <select name="size" id="size" class="form-control mb-3">
-                        <option value="XS">XS</option>
-                        <option value="S">S</option>
-                        <option value="M">M</option>
-                        <option value="L">L</option>
-                        <option value="XL">XL</option>
+                        @foreach(explode(',', $product->sizes) as $size)
+                            <option value="{{ $size }}">{{ $size }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <button type="button" class="btn btn-primary ">Acheter</button>

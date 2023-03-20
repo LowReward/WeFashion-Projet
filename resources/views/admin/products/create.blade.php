@@ -70,6 +70,31 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="sizes">Tailles disponibles :</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="XS" id="size-XS">
+                            <label class="form-check-label" for="size-XS">XS</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="S" id="size-S">
+                            <label class="form-check-label" for="size-S">S</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="m" id="size-m">
+                            <label class="form-check-label" for="size-M">M</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="L" id="size-L">
+                            <label class="form-check-label" for="size-L">L</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="sizes[]" value="XL" id="size-XL">
+                            <label class="form-check-label" for="size-XL">XL</label>
+                        </div>
+                    </div>
+
+
 
                     <div class="form-group">
                         <label for="category_id">Catégorie :</label>

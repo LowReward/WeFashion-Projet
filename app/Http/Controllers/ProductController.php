@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function homme()
 {
     $counter = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published');
-    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published')->simplePaginate(6);
+    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published')->Paginate(6);
     return view('products.index', compact('products','counter'));
 }
 
@@ -42,14 +42,14 @@ public function femme()
     })->where('published', 'published');
     $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {
         $query->where('name', 'femme');
-    })->where('published', 'published')->simplePaginate(6);
+    })->where('published', 'published')->Paginate(6);
     return view('products.index', compact('products','counter'));
 }
 
 public function solde()
 {
     $counter = $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published');
-    $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published')->simplePaginate(6);
+    $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published')->Paginate(6);
     return view('products.index', compact('products','counter'));
 }
 
@@ -80,14 +80,18 @@ public function create()
             'published' => 'required',
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'sizes' => 'required|array',
         ]);
+        $sizes = implode(',', $validatedData['sizes']);
+
         if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();
+            $imageName = Str::random(12).'.'.$request->image->extension();
             $imagePath = $request->file('image')->move('images/products', $imageName);
             $validatedData['image'] = $imagePath;
         }
-
+        $validatedData['sizes'] = $sizes;
         $product = Product::create($validatedData);
+
 
     return redirect('/admin/products')->with('success', 'Le produit a été ajoutée avec succès !');
     }
@@ -111,7 +115,8 @@ public function create()
         'price' => 'required|numeric|min:0',
         'status' => 'required|in:standard,on_sale',
         'category_id' => 'required|exists:categories,id',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'sizes' => 'required|array',
     ]);
 
     // Modification du produit avec les données validées
@@ -120,6 +125,8 @@ public function create()
     $product->price = $request->input('price');
     $product->status = $request->input('status');
     $product->category_id = $request->input('category_id');
+    $sizes = $request->input('sizes');
+    $product->sizes = implode(',', $sizes);
 
     // Gestion de l'image si elle a été modifiée
     if ($request->hasFile('image')) {

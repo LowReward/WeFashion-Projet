@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('published', ['published', 'not_published'])->default('published');
             $table->string('reference',16);
             $table->string('image')->nullable();
+            $table->string('sizes')->nullable();
             $table->unsignedBigInteger('category_id')->default(1);
             $table->timestamps();
 

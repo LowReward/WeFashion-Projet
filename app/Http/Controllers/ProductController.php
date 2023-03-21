@@ -215,6 +215,12 @@ class ProductController extends Controller
     {
         // Récupération du produit à supprimer
         $product = Product::find($id);
+
+        // Suppression de l'image associée si elle existe
+        if (file_exists($product->image)) {
+        unlink($product->image);
+        }
+
         $product->delete();
         // Redirection vers la liste des produits avec un message de succès
         return redirect('/admin/products')->with('success', 'Le produit a été supprimée avec succès!');

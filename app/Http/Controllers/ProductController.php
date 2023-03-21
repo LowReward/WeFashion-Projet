@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function show($id)
     {
         //Récuperation d'un produit spécifique en fonction de l'ID passé en paramètre et affichage de la vue correspondante
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         return view('products.show', compact('product'));
     }
 

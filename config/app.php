@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', false), // La partie debug doit toujours être en false pour éviter d'afficher du contenu sensible, notamment les versions à des personnes malveillante
 
     /*
     |--------------------------------------------------------------------------

@@ -38,7 +38,7 @@
                         <label for="price">Prix :</label>
                         <input type="number" name="price" id="price"
                             class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}"
-                            min="0" step="0.01" required>
+                            min="0" max="999999" pattern="^[0-9]+(\.[0-9]{1,2})?$" step="0.01" required>
                         @error('price')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -10,7 +10,6 @@ mobile, via un agent conversationnel.</p>
 - Faire une copie de `.exemple.env` et renommer le fichier en `.env`
 - Créer une nouvelle base de données sous le nom de wefashion et y ajouter les informations dans le fichier .env
 - saisir : `composer install`
-- `npm install && npm run dev`
 - `php artisan key:generate`
 - `php artisan migrate`
 - `php artisan db:seed`

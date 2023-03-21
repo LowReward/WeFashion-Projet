@@ -1,3 +1,4 @@
+<!-- Template pour le dashboard d'administration -->
 @extends('layouts.admindashboard')
 
 @section('content')

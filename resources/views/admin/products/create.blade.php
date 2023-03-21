@@ -36,6 +36,7 @@
 
                     <div class="form-group">
                         <label for="price">Prix :</label>
+                        <!-- On rajoute un pattern ici pour éviter que l'utilisateur ne rentre que des chiffres ( le type number ) -->
                         <input type="number" name="price" id="price"
                             class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}"
                             min="0" max="999999" pattern="^[0-9]+(\.[0-9]{1,2})?$" step="0.01" required>

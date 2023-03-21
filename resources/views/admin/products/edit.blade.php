@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        <!-- Page à celle de création, les champs ne sont plus forcément obligatoire -->
         <h1 class="mb-4">Modifier un produit : {{ $product->name }}</h1>
         <div class="row">
             <div class="col-md-8">

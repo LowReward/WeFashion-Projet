@@ -1,10 +1,12 @@
+<!-- Template d'administration -->
 @extends('layouts.admin')
 
 @section('content')
     <div class="container">
 
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
+                <!-- On place le tout dans une carte centré pour faire quelque chose de basique mais 'propre' -->
                 <div class="card">
                     <div class="card-header">{{ __("Connexion à l'administration") }}</div>
                     <!-- Affichage d'un message d'erreur 's'il existe -->
@@ -18,7 +20,7 @@
                             @csrf
 
 
-                            <div class="form-group row">
+                            <div class="form-group row mt-3">
                                 <label for="email"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Adresse email') }}</label>
 
@@ -35,11 +37,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
+                            <div class="form-group row mt-3">
                                 <label for="password"
                                     class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
 
-                                <div class="col-md-6">
+                                <div class="col-md-6 ">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
@@ -52,7 +54,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row mb-0">
+                            <div class="form-group row mb-0 mt-3">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
                                         {{ __('Connexion') }}

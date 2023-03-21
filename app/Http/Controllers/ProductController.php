@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
 
 
 
@@ -16,13 +15,24 @@ class ProductController extends Controller
 {
     public function index()
     {
-        //Récuperation de tous les produits publiés et triés par ordre décroissant avec une pagination de 6 produits par pages
-        $products = Product::orderBy('created_at', 'desc')->where('published', 'published')->Paginate(6);
-        //La vue affiche également un compteur qui représente le nombre total de produits publiés
-        $counter = Product::orderBy('created_at', 'desc')->where('published', 'published');
-        // Compact() est utilisée pour passer les données du contrôleur à la vue
-        return view('products.index', compact('products','counter'));
+    // Récupérer le numéro de page à afficher à partir de l'URL
+    $page = (int) request()->query('page', 1);
+
+    // Récupération des produits publiés et triés par ordre décroissant et pagination des produits avec 6 produits par page
+    $products = Product::orderBy('created_at', 'desc')->where('published', 'published')->paginate(6, ['*'], 'page', $page);
+
+    // Récupération du nombre total de produits publiés
+    $counter = Product::orderBy('created_at', 'desc')->where('published', 'published');
+
+    // Vérifier si la page demandée est valide (Dans le cas où un client modifie l'url pour un numero de page non existant, alors on le renvoie vers la dernière page disponible)
+    if ($page > $products->lastPage()) {
+        return redirect()->route('products.index', ['page' => $products->lastPage()]);
     }
+
+    // Passer les données du contrôleur à la vue avec Compact()
+    return view('products.index', compact('products','counter'));
+    }
+
 
     public function show($id)
     {
@@ -33,27 +43,52 @@ class ProductController extends Controller
 
     public function homme()
     {
-    //Récuperation de tous les produits publiés ayant comme nom de catégorie "homme" et triés par ordre décroissant avec une pagination de 6 produits par pages
+
+    $page = (int) request()->query('page', 1);
     $counter = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published');
-    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published')->Paginate(6);
+
+    // Récupération des produits publiés de la catégorie homme et triés par ordre décroissant et pagination des produits avec 6 produits par page
+    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'homme');})->where('published', 'published')->paginate(6, ['*'], 'page', $page);;
+
+    // Vérifier si la page demandée est valide
+    if ($page > $products->lastPage()) {
+        return redirect()->route('products.index', ['page' => $products->lastPage()]);
+    }
+
     return view('products.index', compact('products','counter'));
     }
 
     public function femme()
     {
-    //Récuperation de tous les produits publiés ayant comme nom de catégorie "femme" et triés par ordre décroissant avec une pagination de 6 produits par pages
+    $page = (int) request()->query('page', 1);
     $counter = $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'femme');})->where('published', 'published');
-    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'femme');})->where('published', 'published')->Paginate(6);
+    $products = Product::orderBy('created_at', 'desc')->whereHas('category', function($query) {$query->where('name', 'femme');})->where('published', 'published')->paginate(6, ['*'], 'page', $page);;
+
+    if ($page > $products->lastPage()) {
+        return redirect()->route('products.index', ['page' => $products->lastPage()]);
+    }
+
     return view('products.index', compact('products','counter'));
     }
 
     public function solde()
     {
-    //Récuperation de tous les produits en solde publiés et triés par ordre décroissant avec une pagination de 6 produits par pages
+
+    $page = (int) request()->query('page', 1);
     $counter = $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published');
-    $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published')->Paginate(6);
+
+    // Récupération des produits publiés en solde et triés par ordre décroissant et pagination des produits avec 6 produits par page
+    $products = Product::orderBy('created_at', 'desc')->where('status', 'on_sale')->where('published', 'published')->paginate(6, ['*'], 'page', $page);;
+
+    // Vérifier si la page demandée est valide
+    if ($page > $products->lastPage()) {
+        return redirect()->route('products.index', ['page' => $products->lastPage()]);
+    }
+
     return view('products.index', compact('products','counter'));
     }
+
+
 
     public function dashboard()
     {
@@ -66,6 +101,7 @@ class ProductController extends Controller
         }
         return redirect('/admin/login');
     }
+
 
     public function create()
     {
